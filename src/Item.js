@@ -1,38 +1,31 @@
-import { getByDisplayValue } from "@testing-library/react";
 import React from "react";
 
-function Item({ name, price, image, description }) {
-  const [count, setCount] = React.useState(0);
+function Item({ name, price, id, handleAddToCart }) {
+  const [itemCount, setItemCount] = React.useState(0);
 
   function increment() {
-    setCount((prevCount) => {
+    setItemCount((prevCount) => {
       return prevCount + 1;
     });
   }
 
-  function substract() {
-    setCount((prevCount) => {
-      if (!prevCount) {
-        return (prevCount = 0);
-      } else {
-        return prevCount - 1;
-      }
-    });
+  function addToCart() {
+    handleAddToCart(itemCount, itemCount * price, name);
+    setItemCount(0)
   }
 
   return (
-    <div>
-      <img src={image} alt={`${name}`}></img>
-      <h2>
-        {name} - {price}
-      </h2>
-      <div className="quantity-container">
-        <button onClick={substract}>-</button>
-        <p className="quantity-display">{count}</p>
-        <button onClick={increment}>+</button>
-      </div>
-      <p>Total: ${count * price}</p>
-      <button>Add to Cart</button>
+    <div className="item-card">
+      <h1>{name}</h1>
+      <p>{price}</p>
+      <p>Amount: {itemCount}</p>
+      <button onClick={increment}>Increment</button>
+      <p>total: {itemCount * price}$</p>
+      <button
+        onClick={addToCart}
+      >
+        Add to cart
+      </button>
     </div>
   );
 }
