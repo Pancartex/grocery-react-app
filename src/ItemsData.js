@@ -2,6 +2,7 @@ import React from "react";
 
 export default [
   {
+    id: 1,
     name: "Milk",
     description:
       "Before the late 1960s, milk was packaged in heavy, Now plastic bags!",
@@ -10,6 +11,7 @@ export default [
     price: 1.99,
   },
   {
+    id: 2,
     name: "Chips",
     description: "Very spicy, avoid giving to childrens.",
     image:
@@ -17,6 +19,7 @@ export default [
     price: 4.99,
   },
   {
+    id: 3,
     name: "Eggs",
     description: "Sold by the dozen. Fresh from the day.",
     image:
@@ -24,12 +27,14 @@ export default [
     price: 3.5,
   },
   {
+    id: 4,
     name: "Bread",
     description: "Fresh from this morning, made with love.",
     image: "http://www.canadabreadfoodservice.ca/wp-content/uploads/350.jpg",
     price: 2.69,
   },
   {
+    id: 5,
     name: "Cheese",
     description: "Swiss cheese sold by the kg.",
     image:
@@ -37,6 +42,7 @@ export default [
     price: 6.99,
   },
   {
+    id: 6,
     name: "Oatmeal",
     description: "100% made of oat, in North America.",
     image:
@@ -44,6 +50,7 @@ export default [
     price: 3.99,
   },
   {
+    id: 7,
     name: "Oreo",
     description: "Cookies with chocolate cream.",
     image:
