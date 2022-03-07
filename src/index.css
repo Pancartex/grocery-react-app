@@ -6,11 +6,13 @@ body,
 html {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  font-family: -apple-system, BlinkMacSystemFont, "Karla", "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  background-color: rgba(36, 37, 38, 0.8);
 }
 
 code {
@@ -18,16 +20,165 @@ code {
     monospace;
 }
 
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
 .main {
   display: flex;
-  gap: 300px;
+  flex-direction: column;
 }
 
 .item-container {
   display: flex;
+  flex-direction: column;
   gap: 50px;
+  align-items: center;
+  padding-top: 40px;
+  background-color: #fff;
 }
 
 .item-card {
   border: 1px solid black;
+  padding: 20px;
+  width: 90%;
+}
+
+.item-img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  max-height: 240px;
+}
+
+.item-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.counter-btn {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: #eeeeee;
+  color: #000;
+  font-size: 1.5rem;
+}
+
+.counter-btn:hover {
+  background-color: rgb(201, 199, 199);
+  color: #000;
+  outline: none;
+}
+
+.counter-btn:active {
+  opacity: 0.95;
+  transform: scale(0.95);
+}
+
+.counter-btn:disabled {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: rgba(238, 238, 238, 0.5);
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 15px;
+}
+
+.minus-btn {
+  font-size: 15px;
+}
+
+.counter-display: {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #262626;
+  text-align: center;
+}
+
+.counter-display h1 {
+  margin: 0;
+  width: 50px;
+  text-align: center;
+}
+
+.item-add-btn {
+  background-color: #fff;
+  width: 100%;
+  padding: 10px 25px;
+  margin-top: 15px;
+  font-weight: 700;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+  background: linear-gradient(
+    to left,
+    transparent 50%,
+    rgba(36, 37, 38, 0.8) 50%
+  );
+  background-size: 200% 100%;
+  background-position: right bottom;
+}
+
+.item-add-btn:hover {
+  background-position: left bottom;
+  color: #fff;
+}
+
+.item-add-btn:active {
+  background-color: rgba(36, 37, 38, 0.8);
+  color: #fff;
+}
+
+/* ------------------
+  Checkout cart CSS starts here
+   ------------------ */
+
+.checkout-cart {
+  background: #fff;
+}
+
+@media (hover: hover) {
+  .item-add-btn:hover {
+    background-color: #fff !important;
+  }
+}
+
+/* ------------------
+  big screen CSS starts here
+   ------------------ */
+
+@media (min-width: 700px) {
+  .main {
+    flex-direction: row;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .item-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 20px 40px;
+  }
+
+  .item-card {
+    max-width: 350px;
+  }
 }

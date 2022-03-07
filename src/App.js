@@ -27,34 +27,36 @@ function App() {
     } else {
       setCheckoutItem((prevCheckoutItem) => {
         return prevCheckoutItem.map((item) => {
-          return item.name === name ? { count: count, totalPrice: totalPrice, name: name } : item;
+          return item.name === name
+            ? { count: count, totalPrice: totalPrice, name: name }
+            : item;
         });
       });
     }
   }
 
   function removeFromCheckout(name) {
-    
-    setCheckoutItem(prevCheckoutItem => {
-      
-      let newCheckoutArr = []
+    setCheckoutItem((prevCheckoutItem) => {
+      let newCheckoutArr = [];
 
       for (let i = 0; i < prevCheckoutItem.length; i++) {
         if (prevCheckoutItem[i].name === name) {
-            prevCheckoutItem.splice(i, 1)
+          prevCheckoutItem.splice(i, 1);
         } else {
-          newCheckoutArr.push(prevCheckoutItem[i])
+          newCheckoutArr.push(prevCheckoutItem[i]);
         }
       }
-      return newCheckoutArr
-    })
+      return newCheckoutArr;
+    });
   }
-
 
   return (
     <div className="main">
       <div className="item-container">{items}</div>
-      <Checkout checkoutItem={checkoutItem} handleRemoveFromCheckout={removeFromCheckout} />
+      <Checkout
+        checkoutItem={checkoutItem}
+        handleRemoveFromCheckout={removeFromCheckout}
+      />
     </div>
   );
 }
