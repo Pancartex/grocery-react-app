@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Item({ image, name, price, description, handleAddToCart }) {
-  const [itemCount, setItemCount] = React.useState(1);
+  const [itemCount, setItemCount] = useState(1);
 
   function increment() {
     setItemCount((prevCount) => {
@@ -44,7 +44,7 @@ function Item({ image, name, price, description, handleAddToCart }) {
             onClick={substract}
             disabled
           >
-            <i class="fa-solid fa-minus"></i>
+            <i className="fa-solid fa-minus"></i>
           </button>
         )}
         {itemCount > 1 && (
@@ -52,7 +52,7 @@ function Item({ image, name, price, description, handleAddToCart }) {
             className="counter-btn noselect minus-btn"
             onClick={substract}
           >
-            <i class="fa-solid fa-minus"></i>
+            <i className="fa-solid fa-minus"></i>
           </button>
         )}
         <div className="counter-display">
