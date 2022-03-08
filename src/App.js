@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Data from "./ItemsData.js";
 import Item from "./Item.js";
 import Checkout from "./Checkout.js";
 
 function App() {
-  const [itemsData, setItemsData] = React.useState(Data);
-  const [totalCheckout, setTotalCheckout] = React.useState(0);
-  const [checkoutItem, setCheckoutItem] = React.useState([]);
+  const [itemsData, setItemsData] = useState(Data);
+  const [checkoutItem, setCheckoutItem] = useState([]);
 
   const items = itemsData.map((item) => {
     return <Item key={item.id} {...item} handleAddToCart={addToCart} />;
@@ -28,7 +27,11 @@ function App() {
       setCheckoutItem((prevCheckoutItem) => {
         return prevCheckoutItem.map((item) => {
           return item.name === name
-            ? { count: count, totalPrice: totalPrice, name: name }
+            ? {
+                count: item.count + count,
+                totalPrice: item.totalPrice + totalPrice,
+                name: name,
+              }
             : item;
         });
       });
