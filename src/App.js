@@ -7,19 +7,10 @@ function App() {
   const [itemsData, setItemsData] = useState(Data);
   const [checkoutItem, setCheckoutItem] = useState([]);
 
-  const items = itemsData.map((item) => {
-    return <Item key={item.id} {...item} handleAddToCart={addToCart} />;
-  });
-
   function addToCart(count, totalPrice, name) {
-    let inCheckout = false;
+    const itemInCart = checkoutItem.find((item) => item.name === name);
 
-    checkoutItem.forEach((existingItem) => {
-      if (existingItem.name === name) {
-        inCheckout = true;
-      }
-    });
-    if (!inCheckout) {
+    if (!itemInCart) {
       setCheckoutItem((prevCheckoutItem) => {
         return [...prevCheckoutItem, { count, totalPrice, name }];
       });
@@ -28,9 +19,9 @@ function App() {
         return prevCheckoutItem.map((item) => {
           return item.name === name
             ? {
+                ...item,
                 count: item.count + count,
                 totalPrice: item.totalPrice + totalPrice,
-                name: name,
               }
             : item;
         });
@@ -55,7 +46,11 @@ function App() {
 
   return (
     <div className="main">
-      <div className="item-container">{items}</div>
+      <div className="item-container">
+        {itemsData.map((item) => {
+          return <Item key={item.id} {...item} handleAddToCart={addToCart} />;
+        })}
+      </div>
       <Checkout
         checkoutItem={checkoutItem}
         handleRemoveFromCheckout={removeFromCheckout}
