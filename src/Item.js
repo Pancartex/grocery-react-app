@@ -24,11 +24,6 @@ function Item({ image, name, price, description, handleAddToCart }) {
     }
   }
 
-  const newLocal = (
-    <button disabled className="counter-btn" onClick={substract}>
-      -
-    </button>
-  );
   return (
     <div className="item-card">
       <img className="item-img" src={image} />
@@ -38,23 +33,14 @@ function Item({ image, name, price, description, handleAddToCart }) {
       </div>
       <p>{description}</p>
       <div className="item-counter">
-        {itemCount <= 1 && (
-          <button
-            className="counter-btn noselect minus-btn"
-            onClick={substract}
-            disabled
-          >
-            <i className="fa-solid fa-minus"></i>
-          </button>
-        )}
-        {itemCount > 1 && (
-          <button
-            className="counter-btn noselect minus-btn"
-            onClick={substract}
-          >
-            <i className="fa-solid fa-minus"></i>
-          </button>
-        )}
+        <button
+          className="counter-btn noselect minus-btn"
+          onClick={substract}
+          disabled={itemCount <= 1}
+        >
+          <i className="fa-solid fa-minus"></i>
+        </button>
+
         <div className="counter-display">
           <h1>{itemCount}</h1>
         </div>
