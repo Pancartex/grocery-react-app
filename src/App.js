@@ -29,6 +29,7 @@ function App() {
     }
   }
 
+  // passing this function to checkout component. onClick to remove item from cart
   function removeFromCheckout(name) {
     setCheckoutItem((prevCheckoutItem) => {
       let newCheckoutArr = [];
